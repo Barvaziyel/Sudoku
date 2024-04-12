@@ -1,10 +1,23 @@
 import copy
 import random
+from flask import Flask, render_template
 
 EMPTY_CELL_CHAR = 0
 DEFAULT_DIFFICULTY = 20
 GRID_SQUARE_SIZE = 3
 GRID_SIZE = 9
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def fetch_sudoku():
+    """
+    Create a sudoku puzzle and solution and render the sudoku.html template
+    return: the rendered template
+    """
+    puzzle, solution = create_puzzle()
+    return render_template('sudoku.html', grid=puzzle, solution=solution)
 
 
 def check_row(sudoku, row, num):
@@ -209,3 +222,7 @@ def create_puzzle(difficulty=DEFAULT_DIFFICULTY):
             # If the number of failed removals is greater than the difficulty, return the puzzle
             if failed_removals > difficulty:
                 return sudoku, solve_sudoku(sudoku)
+
+
+if __name__ == '__main__':
+    app.run()
