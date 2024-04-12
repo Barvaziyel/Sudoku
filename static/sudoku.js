@@ -1,9 +1,52 @@
 /**
+    * Function to get hint for the user
+    * The function is called when the "Get Hint" button is clicked
+    * The function selects a random empty cell in the grid
+    * The function fills the cell with the correct solution
+    * If the cell is not empty, the function selects another random cell
+**/
+function getHint() {
+    var tried_cells = [];
+    while (tried_cells.length < 81) {
+        var col = Math.floor(Math.random() * 9);
+        var row = Math.floor(Math.random() * 9);
+        if (tried_cells.includes([row, col])) {
+            continue;
+        }
+        var input = document.querySelector(`input[data-row="${row}"][data-col="${col}"]`);
+        if (input.value == '') {
+            input.value = solution[row][col];
+            return;
+        } else {
+            tried_cells.push([row, col]);
+        }
+    }
+    alert("No empty cells left to fill.");
+}
+
+/**
+    * Function to clear the user's input
+    * The function is called when the "Clear Board" button is clicked
+    * The function clears all the input fields in the grid
+**/
+function clearBoard() {
+    for (let row = 0; row < 9; row++) {
+        for (let col = 0; col < 9; col++) {
+            const input = document.querySelector(`input[data-row="${row}"][data-col="${col}"]`);
+            if (!input.hasAttribute('data-cell') || input.getAttribute('data-cell') === "editable") {
+                input.value = '';
+            }
+        }
+    }
+}
+
+
+/**
     * Function to toggle the visibility of the solution grid
     * The solution grid is hidden by default
     * When the "Show Solution" button is clicked, the solution grid is displayed
     * When the "Hide Solution" button is clicked, the solution grid is hidden
-    **/
+**/
 function toggleSolution() {
     var solutionGrid = document.getElementById("solutionGrid");
     var toggleBtn = document.getElementById("toggleSolutionBtn");
