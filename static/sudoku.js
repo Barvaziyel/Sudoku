@@ -1,27 +1,29 @@
 /**
     * Function to get hint for the user
     * The function is called when the "Get Hint" button is clicked
-    * The function selects a random empty cell in the grid
-    * The function fills the cell with the correct solution
-    * If the cell is not empty, the function selects another random cell
+    * The function fills in one empty cell in the grid with the correct solution
+    * If there are no empty cells left, an alert is displayed
 **/
 function getHint() {
-    var tried_cells = [];
-    while (tried_cells.length < 81) {
-        var col = Math.floor(Math.random() * 9);
-        var row = Math.floor(Math.random() * 9);
-        if (tried_cells.includes([row, col])) {
-            continue;
-        }
-        var input = document.querySelector(`input[data-row="${row}"][data-col="${col}"]`);
-        if (input.value == '') {
-            input.value = solution[row][col];
-            return;
-        } else {
-            tried_cells.push([row, col]);
+    var empty_cells = [];
+    for (let row = 0; row < 9; row++) {
+        for (let col = 0; col < 9; col++) {
+            const input = document.querySelector(`input[data-row="${row}"][data-col="${col}"]`);
+            if (input.value == '') {
+                empty_cells.push([row, col]);
+            }
         }
     }
-    alert("No empty cells left to fill.");
+    if (empty_cells.length > 0) {
+        const randomCell = empty_cells[Math.floor(Math.random() * empty_cells.length)];
+        const row = randomCell[0];
+        const col = randomCell[1];
+        const input = document.querySelector(`input[data-row="${row}"][data-col="${col}"]`);
+        input.value = solution[row][col];
+    }
+    else {
+        alert("No empty cells left to fill.");
+    }
 }
 
 /**
