@@ -18,9 +18,9 @@
                     {% for col in range(9) %}
                         <td class="{% if row in [2, 5] %}bottom-border{% endif %} {% if col in [2, 5] %}right-border{% endif %}">
                             {% if grid[row][col] != 0 %}
-                                <input type="text" value="{{ grid[row][col] }}" maxlength="1" data-row="{{ row }}" data-col="{{ col }}" disabled>
+                                <input type="text" value="{{ grid[row][col] }}" maxlength="1" data-row="{{ row }}" data-col="{{ col }}" data-cell="fixed" disabled>
                             {% else %}
-                                <input type="text" value="" maxlength="1" pattern="[1-9]" oninput="validateInput(this);" data-row="{{ row }}" data-col="{{ col }}">
+                                <input type="text" value="" maxlength="1" pattern="[1-9]" oninput="validateInput(this);" data-row="{{ row }}" data-col="{{ col }}" data-cell="editable">
                             {% endif %}
                         </td>
                     {% endfor %}
@@ -41,9 +41,13 @@
             </table>
         </div>
     </div>
-    <button id="toggleSolutionBtn" onclick="toggleSolution()">Show Solution</button>
-    <button onclick="checkSolution()">Check My Solution</button>
-    <button id="newPuzzleBtn" onclick="newPuzzle()">New Puzzle</button>
+    <div id="button-container">
+        <button id="getHintBtn" onclick="getHint()">Get Hint</button>
+        <button id="toggleSolutionBtn" onclick="toggleSolution()">Show Solution</button>
+        <button id="clearBoardBtn" onclick="clearBoard()">Clear Board</button>
+        <button onclick="checkSolution()">Check My Solution</button>
+        <button id="newPuzzleBtn" onclick="newPuzzle()">New Puzzle</button>
+    </div>
     <audio id="celebrationAudio" src="{{ url_for('static', filename='celebration.mp3') }}" preload="auto"></audio>
     <script src="{{ url_for('static', filename='sudoku.js') }}"></script>
 </body>

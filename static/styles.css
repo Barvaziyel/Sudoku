@@ -1,3 +1,14 @@
+body {
+    background-color: #333;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #grids {
     display: flex;
     justify-content: center;
@@ -5,25 +16,23 @@
 }
 
 table {
-    border-collapse: collapse;
-    margin: 0;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 5px;
+    background-color: #424242;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 th, td {
-    border: 1px solid black;
+    border: 2px solid #555;
     width: 40px;
     height: 40px;
     text-align: center;
     font-size: 24px;
     font-weight: bold;
-}
-
-td.right-border {
-    border-right: 2px solid black;
-}
-
-td.bottom-border {
-    border-bottom: 2px solid black;
+    background-color: #525252;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
 }
 
 input[type="text"] {
@@ -31,46 +40,73 @@ input[type="text"] {
     height: 100%;
     text-align: center;
     border: none;
+    outline: none;
     box-sizing: border-box;
     font-size: 24px;
     font-weight: bold;
+    color: #fff;
+    background-color: transparent;
 }
 
 input[type="text"]:disabled {
-    background-color: lightgray;
+    background-color: #393939;
+    color: #fff;
+}
+
+#button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.button, button {
+    background-color: #3a6b35;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button:hover, button:hover {
+    background-color: #2e5530;
+    transform: scale(1.05);
+}
+
+.button:active, button:active {
+    transform: scale(0.95);
 }
 
 @media (max-width: 768px) {
-    #grids {
+    #grids, #button-container {
         flex-direction: column;
         align-items: center;
     }
-    .timer-display {
-        font-size: 16px;
-        padding: 8px 15px;
-        margin: 10px auto;
-    }
-}
-
-#congratulationsMessage {
-    color: #4CAF50;
-    font-size: 20px;
-    padding: 20px;
-    border: 1px solid #4CAF50;
-    border-radius: 5px;
-    margin-top: 20px;
-    display: none;
 }
 
 .timer-display {
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    background-color: #f0f0f0;
-    border: 2px solid #ddd;
-    border-radius: 4px;
+    background-color: #424242;
+    color: #fff;
+    border: 1px solid #555;
     padding: 10px 20px;
-    margin: 20px auto;
-    display: inline-block;
     font-size: 18px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#congratulationsMessage {
+    background-color: #424242;
+    color: #4CAF50;
+    font-size: 18px;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    border: 1px solid #4CAF50;
+    box-shadow: 0 2px 4px rgba(0, 153, 0, 0.2);
+    display: none;
 }
