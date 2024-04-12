@@ -9,6 +9,8 @@ Welcome to my personal project—a fully interactive **Sudoku puzzle generator a
 - **Solution Validation**: Stuck? Hit the "Check Solution" button to see if you're on the right track or use it to learn from your mistakes.
 - **Timer**: Challenge yourself against the clock! See how quickly you can solve Sudoku puzzles.
 - **Adaptive Design**: Play comfortably on any device, thanks to responsive design elements.
+- **Clear Board**: Easily reset your current progress on the puzzle without needing to refresh the entire page or start a new puzzle.
+- **Get Hint**: Stuck on a tough spot? Use the "Get Hint" button to reveal a helpful hint for one of the unsolved cells.
 
 ## Built With
 
@@ -57,6 +59,9 @@ Simply fill in the grid with numbers following standard Sudoku rules. Use the bu
 - **Check My Solution**: Validates your current answers.
 - **Show Solution**: Reveals the correct answers (no peeking!).
 - **New Puzzle**: Loads a fresh Sudoku puzzle to tackle.
+- **Clear Board**: Clears all entries you've made so far, allowing you to start filling out the puzzle again from scratch.
+- **Get Hint**: Provides a hint by filling in a correct number in one of the empty cells.
+
 
 ## Fun Project Note
 
