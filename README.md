@@ -64,7 +64,7 @@ This was a personal project made just for fun and to improve my coding skills. I
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the [MIT License](LICENSE.txt).
 
 ## Acknowledgments
 
