@@ -29,25 +29,25 @@ You'll need **Python 3** and **pip** installed on your computer. Virtual environ
 
 1. **Clone this repository**:
     ```bash
-    git clone https://github.com/Barvaziyel/Sudoku.git```
+    git clone https://github.com/Barvaziyel/Sudoku.git
 
 2. **Navigate to the project directory**:
     ```bash
-    cd Sudoku```
+    cd Sudoku
 
 3. **Set up a virtual environment** (optional):
     ```bash
     python -m venv venv
     source venv/bin/activate # Unix/macOS
-    venv\Scripts\activate # Windows```
+    venv\Scripts\activate # Windows
 
 4. **Install the required packages**:
     ```bash
-    pip install -r requirements.txt```
+    pip install -r requirements.txt
 
 5. **Fire up the server**:
     ```bash
-    flask run```
+    flask run
 
 6. **Visit `http://127.0.0.1:5000/` in your browser** and start playing!
 
@@ -70,3 +70,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 - Hat tip to anyone whose code was used as inspiration.
 - Big thanks to the Flask and JavaScript communities for the amazing libraries and frameworks.
+- And, of course, a shoutout to all the Sudoku enthusiasts out there! Keep solving those puzzles! 🧩
