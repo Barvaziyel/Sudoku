@@ -1,4 +1,22 @@
 /**
+    * Function to display message to the user
+    * The function is called to display success or error messages to the user
+    * The function takes a message and an optional isError parameter
+    * If isError is true, the message is displayed in red, else it is displayed in green
+    * The message is displayed in the message area at the top of the page
+    * The message is hidden after 5 seconds
+**/
+function displayMessage(message, isError = true) {
+    const messageArea = document.getElementById("message-area");
+    messageArea.textContent = message;
+    messageArea.style.color = isError ? '#ff4747' : '#4CAF50';  // Red for errors, green for success
+    messageArea.style.display = 'block';  // Make the message area visible
+    setTimeout(() => {
+        messageArea.style.display = 'none';  // Hide after 5 seconds
+    }, 5000);
+}
+
+/**
     * Function to get hint for the user
     * The function is called when the "Get Hint" button is clicked
     * The function fills in one empty cell in the grid with the correct solution
@@ -22,7 +40,7 @@ function getHint() {
         input.value = solution[row][col];
     }
     else {
-        alert("No empty cells left to fill.");
+        displayMessage("No empty cells left to fill.");
     }
 }
 
@@ -88,7 +106,7 @@ function checkSolution() {
             const input = document.querySelector(`input[data-row="${row}"][data-col="${col}"]`);
             const value = parseInt(input.value, 10);
             if (!value) {
-                alert("The grid is not fully filled.");
+                displayMessage("The grid is not fully filled.");
                 return;
             }
             rowValues.push(value);
@@ -99,9 +117,17 @@ function checkSolution() {
     for (let row = 0; row < 9; row++) {
         for (let col = 0; col < 9; col++) {
             if (userGrid[row][col] !== solution[row][col]) {
-                alert("Your solution is incorrect.");
+                displayMessage("Your solution is incorrect.");
                 return;
             }
+        }
+    }
+    for (let row = 0; row < 9; row++) {
+        for (let col = 0; col < 9; col++) {
+            const input = document.querySelector(`input[data-row="${row}"][data-col="${col}"]`);
+            input.setAttribute('data-cell', 'fixed');
+            input.disabled = true;
+            input.style.backgroundColor = 'transparent';
         }
     }
     stopTimer();

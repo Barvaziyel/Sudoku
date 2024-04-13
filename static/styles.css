@@ -161,3 +161,14 @@ form {
     background: #4CAF50;
     cursor: pointer;
 }
+
+.message-area {
+    color: #ff4747;
+    background-color: #424242;
+    border: 1px solid #ff4747;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    text-align: center;
+    display: none;
+}
