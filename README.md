@@ -11,6 +11,8 @@ Welcome to my personal project—a fully interactive **Sudoku puzzle generator a
 - **Adaptive Design**: Play comfortably on any device, thanks to responsive design elements.
 - **Clear Board**: Easily reset your current progress on the puzzle without needing to refresh the entire page or start a new puzzle.
 - **Get Hint**: Stuck on a tough spot? Use the "Get Hint" button to reveal a helpful hint for one of the unsolved cells.
+- **Difficulty Selection**: Start your game on the homepage by choosing the puzzle difficulty from a simple slider, making the game suitable for both beginners and advanced players.
+
 
 ## Built With
 
@@ -55,7 +57,12 @@ You'll need **Python 3** and **pip** installed on your computer. Virtual environ
 
 ## How to Play
 
-Simply fill in the grid with numbers following standard Sudoku rules. Use the buttons below the grid to:
+## How to Play
+
+- **Choose Difficulty**: Begin at the homepage by selecting your preferred difficulty level using the slider.
+- **Navigate to the Game**: Click the "Go!" button to start playing with your chosen difficulty.
+- **Fill the Grid**: Simply enter numbers into the grid following standard Sudoku rules.
+- **Utilize Tools**: Use the buttons below the grid to validate your solution, get hints, or start a new puzzle.
 - **Check My Solution**: Validates your current answers.
 - **Show Solution**: Reveals the correct answers (no peeking!).
 - **New Puzzle**: Loads a fresh Sudoku puzzle to tackle.
