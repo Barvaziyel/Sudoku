@@ -1,22 +1,39 @@
 import copy
 import random
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 EMPTY_CELL_CHAR = 0
-DEFAULT_DIFFICULTY = 20
 GRID_SQUARE_SIZE = 3
 GRID_SIZE = 9
+DIFFICULTY_MAPPING = {1: 0, 2: 2, 3: 4, 4: 10, 5: 30}
+DEFAULT_DIFFICULTY_LEVEL = 3
+DEFAULT_DIFFICULTY = DIFFICULTY_MAPPING.get(DEFAULT_DIFFICULTY_LEVEL)
+
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def fetch_sudoku():
+def home():
     """
-    Create a sudoku puzzle and solution and render the sudoku.html template
+    Render the home.html template
     return: the rendered template
     """
-    puzzle, solution = create_puzzle()
+    return render_template('home.html')
+
+
+@app.route('/play')
+def fetch_sudoku():
+    """
+    Create a sudoku puzzle and solution based on the selected difficulty level
+    and render the sudoku.html template.
+    return: the rendered template
+    """
+    # Fetch difficulty from the query string, default to level 3 if not provided
+    difficulty_level = int(request.args.get('difficulty', DEFAULT_DIFFICULTY_LEVEL))
+    # Map the difficulty level to max number of cells to try removing before showing the puzzle
+    difficulty = DIFFICULTY_MAPPING.get(difficulty_level, DEFAULT_DIFFICULTY)
+    puzzle, solution = create_puzzle(difficulty)
     return render_template('sudoku.html', grid=puzzle, solution=solution)
 
 
@@ -196,9 +213,7 @@ def solve_sudoku(orig_sudoku):
 def create_puzzle(difficulty=DEFAULT_DIFFICULTY):
     """
     Create a sudoku puzzle
-    Remove numbers from a solved sudoku puzzle one by one until a [parameter 'difficulty'] of failed removals that made the
-    puzzle unsolvable.
-    @param difficulty: The difficulty of the puzzle, number of failed removals before the puzzle is returned
+    @param difficulty: The difficulty of the puzzle
     return: a tuple containing the puzzle and the solution
     """
     sudoku = create_solved_sudoku()
@@ -222,6 +237,9 @@ def create_puzzle(difficulty=DEFAULT_DIFFICULTY):
             # If the number of failed removals is greater than the difficulty, return the puzzle
             if failed_removals > difficulty:
                 return sudoku, solve_sudoku(sudoku)
+        else:
+            # If the sudoku puzzle can still be solved, reset the number of failed removals
+            failed_removals = 0
 
 
 if __name__ == '__main__':
